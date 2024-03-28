@@ -1,38 +1,33 @@
 import React, { useState, useEffect } from "react";
 
-const Products = () => {
-  const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null);
+import Electronics from "./Electronics";
+import Fashion from "./Fashion";
+import Clothing from "./Clothing";
+import Lifestyle from "./Lifestyle";
+import Automative from "./Automative";
+import Smartphones from "./Electronics/Smartphones";
+import Laptops from "./Electronics/Laptops";
 
-  // Fetch products from the dummy API
-  useEffect(() => {
-    fetch("https://dummyjson.com/products")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch products");
-        }
-        return response.json();
-      })
-      .then((data) => setProducts(data))
-      .catch((error) => setError(error.message));
-  }, []);
+const Products = () => {
+  const [selectedCategory, setSelectedCategory] = useState('');
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    {console.log("changed")};
+  };
+
 
   return (
     <div>
-      {error ? (
-        <div>Error: {error}</div>
-      ) : (
-        <div>
-          <h2>Products</h2>
-          <ul>
-
-            {console.log(products.id)}
-            {Array.isArray(products) && products.map((product) => (
-              <li key={product.id}>{product.id}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+    <div className="categories">
+      <Electronics handleCategoryChange={handleCategoryChange} />
+      <Fashion />
+      <Clothing />
+      <Lifestyle />
+      <Automative /> 
+    </div>
+    {selectedCategory === 'smartphones' && <Smartphones />}
+      {selectedCategory === 'laptops' && <Laptops />}
     </div>
   );
 };

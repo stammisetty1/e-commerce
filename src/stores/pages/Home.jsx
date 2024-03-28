@@ -1,13 +1,18 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import Products from "../components/Products";
-
+import Header from "../components/Header";
+import SubHeader from "../components/SubHeader";
+import Smartphones from "../components/Electronics/Smartphones";
+import Carousel from "../components/Carousel";
+import Laptops from "../components/Electronics/Laptops";
 
 const Home = () => {
     return (
         <div>
-            <Navbar />
-            <Products />
+            <Header />
+            <SubHeader />
+            <Carousel />
+            <Smartphones />
+            <Laptops />
         </div>
     )
 }

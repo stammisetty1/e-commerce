@@ -5,10 +5,281 @@
   font-family: sans-serif;
 }
 
-.navSection{
-  border: 1px solid black;
+/* Header */
+.navSection {
+  background-color: #808080; 
+  padding: 10px 20px; 
   display: flex;
   justify-content: space-between;
-  background-color: black;
-  color: white;
+  align-items: center;
+  height: 120px;
+}
+
+#logo {
+  margin: 0; 
+  font-size: 24px; 
+}
+
+#search {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+#searchOption {
+  margin-right: 0px;
+  padding: 8px;
+  border-radius: 0px;
+  height: 32px;
+  width: auto;
+  border: none; 
+}
+
+#search input[type="text"] {
+  padding: 8px;
+  border-radius: 0px;
+  border: none; 
+  height: 32px;
+  margin-left: 0px; 
+  flex-grow: 1;
+  width: 850px;
+}
+
+#search button {
+  background-color: #f90;
+  color: #fff;
+  border: none;
+  padding: 8px;
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+/* Style the icon */
+#search button i {
+  margin-right: 5px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.userDetail,
+.cart {
+  padding: 8px 12px; 
+  margin-left: 10px; 
+  cursor: pointer; 
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+.userDetail:hover,
+.cart:hover {
+  background-color: #e9ecef;
+}
+
+/* Sub Header */
+.categories{
+  display: flex;
+  justify-content: space-between;
+  margin: 2%;
+  padding: 1%;
+}
+
+/* Base styles */
+.subHeader {
+  background-color: #f0f0f0;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center; 
+}
+
+.leftGroup {
+  display: flex;
+  align-items: center;
+}
+
+.rightGroup {
+  display: flex;
+  align-items: center;
+  margin-left: auto; 
+}
+
+.leftGroup button,
+.rightGroup button {
+  margin-right: 10px;
+  background-color: #fff; 
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px; 
+  cursor: pointer;
+}
+
+.leftGroup button:hover,
+.rightGroup button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Categories */
+.modal {
+  position: absolute;
+  top: 170px;
+  transform: translateX(0%);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 1500px;
+  display: none; /* Initially hide the modal */
+}
+
+.leftGroup:hover .modal {
+  display: block; /* Display the modal on hover */
+}
+
+@media screen and (max-width: 768px) {
+  .modal {
+    width: 100%;
+    max-width: 300px; /* Adjust as needed */
+  }
+}
+
+/* CategoriesModal */
+
+.categories-container {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+}
+
+.card {
+  flex: 0 0 auto;
+  margin-right: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.card-info {
+  flex: 1;
+}
+
+/* Optional: Add responsive styles */
+@media screen and (max-width: 768px) {
+  .categories-container {
+      flex-wrap: nowrap;
+  }
+}
+
+/* Smartphones */
+
+/* CategoriesModal.css */
+
+.categories-container-smartphones {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+  animation: scrollAnimation 10s linear infinite; /* Add the animation */
+}
+
+.categories-container-laptops {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+  animation: scrollAnimation 10s linear infinite; /* Add the animation */
+}
+
+@keyframes scrollAnimation {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(-100%); /* Scroll from left to right */
+  }
+}
+
+.card {
+  flex: 0 0 auto;
+  margin-right: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.card-info {
+  flex: 1;
+}
+
+/* Optional: Add responsive styles */
+@media screen and (max-width: 768px) {
+  .categories-container {
+      flex-wrap: nowrap;
+  }
+}
+
+/* Carousel */
+
+/* Carousel.css */
+.carousel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.carousel-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+
+  img {
+      width: 100%; /* Adjust as needed */
+      height: auto;
+      max-height: 300px; /* Limit max height to avoid stretching */
+  }
+
+  p {
+      font-size: 18px;
+      margin-top: 10px;
+  }
+}
+
+.carousel-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.carousel-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  margin: 0 10px; /* Add margin between buttons */
 }
