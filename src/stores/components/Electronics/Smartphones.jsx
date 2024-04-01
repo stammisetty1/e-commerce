@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Smartphones = () => {
   const [smartphones, setSmartPhones] = useState([]);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  // Fetch products from the dummy API
   useEffect(() => {
     fetch("https://dummyjson.com/products/category/smartphones")
       .then((response) => {
@@ -17,19 +18,35 @@ const Smartphones = () => {
       .catch((error) => setError(error.message));
   }, []);
 
+  const handleCardClick = (id) => {
+    navigate(`/products/${id}`);
+  };
+
   return (
     <div>
       {error ? (
         <div>Error: {error}</div>
       ) : (
-        <div className="categories-container-smartphones">
-         { Array.isArray(smartphones) && smartphones.map((smartphone) => (
-                <div className="card" key={smartphone.id}>
-                <img src={smartphone.thumbnail} alt={`Thumbnail for ${smartphone.title}`} />
-                    <div className="card-info">
-                        <h3>{smartphone.title}</h3>
-                    </div>
+        <div className="smartphones-container">
+          {Array.isArray(smartphones) &&
+            smartphones.map((smartphone) => (
+              <div
+                className="card"
+                key={smartphone.id}
+                onClick={() => handleCardClick(smartphone.id)}
+              >
+                <img
+                  src={smartphone.thumbnail}
+                  alt={`Thumbnail for ${smartphone.title}`}
+                />
+                <div className="card-info">
+                  <img src={smartphone.thumbnail} alt={smartphone.title} />
+                  <h3>{smartphone.title}</h3>
+                  <p>{smartphone.description}</p>
+                  <p>Price: ${smartphone.price}</p>
+                  <button>Add to Cart</button>{" "}
                 </div>
+              </div>
             ))}
         </div>
       )}

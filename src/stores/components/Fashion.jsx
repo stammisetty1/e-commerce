@@ -1,25 +1,26 @@
 import React, { useState } from "react";
+import MShirts from "./Fashion/MShirts";
+import MShoes from "./Fashion/MShoes";
+import Sunglasses from "./Fashion/Sunglasses";
+import WJewellery from "./Fashion/WJewellery";
+import WShoes from "./Fashion/WShoes";
+import Tops from "./Fashion/Tops";
+import WBags from "./Fashion/WBags";
+import WDresses from "./Fashion/WDresses";
+
 
 const Fashion = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
-
   return (
     <div>
-    <h2>Fashion</h2>
-      <select value={selectedOption} onChange={handleOptionChange}>
-        <option value="fragrances">Fragrances</option>
-        <option value="tops">Tops</option>
-        <option value="sunglasses">Sunglasses</option>
-        <option value="jewellery">Jewellery</option>
-        <option value="bags">Bags</option>
-      </select>
-      {selectedOption && (
-        <p>You selected: {selectedOption}</p>
-      )}
+      <h2>Fashion</h2>
+      <MShirts />
+      <Tops />
+      <Sunglasses />
+      <MShoes />
+      <WBags />
+      <WDresses />
+      <WJewellery />
+      <WShoes />
     </div>
   );
 };

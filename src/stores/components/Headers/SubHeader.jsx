@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import CategoriesModal from './CategoriesModal';
 
 const SubHeader = () => {
     const [showModal, setShowModal] = useState(false);
@@ -7,10 +6,16 @@ const SubHeader = () => {
     return (
         <div className="subHeader">
             <div className="leftGroup">
-                <button onMouseEnter={() => setShowModal(true)} onMouseLeave={() => setShowModal(false)}>Categories</button>
+                <button 
+                onMouseEnter={() => setShowModal(true)}
+                onMouseOut={(e) => {
+                    if (!e.relatedTarget || !e.relatedTarget.closest('.modal')) {
+                        setShowModal(false);
+                    }
+                }}
+                >Categories</button>
                 {showModal && (
-                    <div className="modal">
-                        <CategoriesModal />
+                    <div className="categories-container">
                     </div>
                 )}
             </div>
