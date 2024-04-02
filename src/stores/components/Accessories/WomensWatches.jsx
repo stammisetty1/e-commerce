@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 const WomensWatches = () => {
   const [wwatches, setWWatches] = useState([]);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-
 
   // Fetch products from the dummy API
   useEffect(() => {
@@ -30,14 +28,22 @@ const WomensWatches = () => {
       {error ? (
         <div>Error: {error}</div>
       ) : (
-        <div className="mens-watches-container">
-         { Array.isArray(wwatches) && wwatches.map((wwatch) => (
-                <div className="card" key={wwatch.id} onClick={() => handleCardClick(wwatch.id)}>
-                <img src={wwatch.thumbnail} alt={`Thumbnail for ${wwatch.title}`} />
-                    <div className="card-info">
-                        <h3>{wwatch.title}</h3>
-                    </div>
-                </div>
+        <div className="womens-watches-container">
+          {Array.isArray(wwatches) &&
+            wwatches.map((wwatch) => (
+              <div
+                className="product-card"
+                key={wwatch.id}
+                onClick={() => handleCardClick(wwatch.id)}
+              >
+                <img
+                  src={wwatch.thumbnail}
+                  alt={`Thumbnail for ${wwatch.title}`}
+                />
+                <h3>{wwatch.title}</h3>
+                <p>Price: ${wwatch.price}</p>
+                <button>Add to Cart</button>{" "}
+              </div>
             ))}
         </div>
       )}

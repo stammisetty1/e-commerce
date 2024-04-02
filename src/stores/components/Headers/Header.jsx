@@ -39,9 +39,9 @@ const Header = () => {
   };
 
   return (
-    <div class="navSection">
-      <div class="title">
-        <h2 class="logo">E-Commerce</h2>
+    <div className="navSection">
+      <div className="title">
+        <h2 className="logo">E-Commerce</h2>
       </div>
       <div id="search">
         <form onSubmit={handleSearch} className="search-form">
@@ -61,13 +61,13 @@ const Header = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
           <button type="submit" onSubmit={handleSearch}>
-            <i class="fa fa-search"></i>
+            <i className="fa fa-search"></i>
           </button>
         </form>
       </div>
-      <div class="user">
-        <div class="cart" onClick={handleCartClick}>Cart</div>
-        <div class="userDetail">SignIn/SignUp</div>
+      <div className="user">
+        <div className="cart" onClick={handleCartClick}>Cart</div>
+        <div className="userDetail">SignIn/SignUp</div>
       </div>
     </div>
   );

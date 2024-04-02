@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const MShirts = () => {
   const [shirts, setShirts] = useState([]);
@@ -9,7 +9,6 @@ const MShirts = () => {
   const handleCardClick = (id) => {
     navigate(`/products/${id}`);
   };
-
 
   // Fetch products from the dummy API
   useEffect(() => {
@@ -29,17 +28,25 @@ const MShirts = () => {
       {error ? (
         <div>Error: {error}</div>
       ) : (
-        <div className="shirts-container">
-         { Array.isArray(shirts) && shirts.map((shirt) => (
-                <div className="card" key={shirt.id} onClick={() => handleCardClick(shirt.id)}>
-                <img src={shirt.thumbnail} alt={`Thumbnail for ${shirt.title}`} />
-                    <div className="card-info">
-                        <h3>{shirt.title}</h3>
-                    </div>
-                </div>
+        <div className="mshirts-container">
+          {Array.isArray(shirts) &&
+            shirts.map((shirt) => (
+              <div
+                className="product-card"
+                key={shirt.id}
+                onClick={() => handleCardClick(shirt.id)}
+              >
+                <img
+                  src={shirt.thumbnail}
+                  alt={`Thumbnail for ${shirt.title}`}
+                />
+                <h3>{shirt.title}</h3>
+                <p>Price: ${shirt.price}</p>
+                <button>Add to Cart</button>{" "}
+              </div>
             ))}
         </div>
-)}
+      )}
     </div>
   );
 };

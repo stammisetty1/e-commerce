@@ -32,11 +32,11 @@ const Fragrances = () => {
       ) : (
         <div className="fragrence-container">
          { Array.isArray(fragrances) && fragrances.map((fragrance) => (
-                <div className="card" key={fragrance.id} onClick={() => handleCardClick(fragrance.id)}>
+                <div className="product-card" key={fragrance.id} onClick={() => handleCardClick(fragrance.id)}>
                 <img src={fragrance.thumbnail} alt={`Thumbnail for ${fragrance.title}`} />
-                    <div className="card-info">
                         <h3>{fragrance.title}</h3>
-                    </div>
+                        <p>Price: ${fragrance.price}</p>
+                  <button>Add to Cart</button>{" "}
                 </div>
             ))}
         </div>

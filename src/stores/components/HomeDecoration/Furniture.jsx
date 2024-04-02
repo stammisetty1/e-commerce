@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Furniture = () => {
   const [furnitures, setFurniture] = useState([]);
@@ -9,7 +9,6 @@ const Furniture = () => {
   const handleCardClick = (id) => {
     navigate(`/products/${id}`);
   };
-
 
   // Fetch products from the dummy API
   useEffect(() => {
@@ -30,16 +29,24 @@ const Furniture = () => {
         <div>Error: {error}</div>
       ) : (
         <div className="furniture-container">
-         { Array.isArray(furnitures) && furnitures.map((furniture) => (
-                <div className="card" key={furniture.id} onClick={() => handleCardClick(furniture.id)}>
-                <img src={furniture.thumbnail} alt={`Thumbnail for ${furniture.title}`} />
-                    <div className="card-info">
-                        <h3>{furniture.title}</h3>
-                    </div>
-                </div>
+          {Array.isArray(furnitures) &&
+            furnitures.map((furniture) => (
+              <div
+                className="product-card"
+                key={furniture.id}
+                onClick={() => handleCardClick(furniture.id)}
+              >
+                <img
+                  src={furniture.thumbnail}
+                  alt={`Thumbnail for ${furniture.title}`}
+                />
+                <h3>{furniture.title}</h3>
+                <p>Price: ${furniture.price}</p>
+                <button>Add to Cart</button>{" "}
+              </div>
             ))}
         </div>
-)}
+      )}
     </div>
   );
 };

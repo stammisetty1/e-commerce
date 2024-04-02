@@ -32,21 +32,14 @@ const Laptops = () => {
           {Array.isArray(laptops) &&
             laptops.map((laptop) => (
               <div
-                className="card"
+                className="product-card"
                 key={laptop.id}
                 onClick={() => handleCardClick(laptop.id)}
               >
-                <img
-                  src={laptop.thumbnail}
-                  alt={`Thumbnail for ${laptop.title}`}
-                />
-                <div className="card-info">
                   <img src={laptop.thumbnail} alt={laptop.title} />
                   <h3>{laptop.title}</h3>
-                  <p>{laptop.description}</p>
                   <p>Price: ${laptop.price}</p>
                   <button>Add to Cart</button>
-                </div>
               </div>
             ))}
         </div>

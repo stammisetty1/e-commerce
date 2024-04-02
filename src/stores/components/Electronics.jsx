@@ -6,8 +6,14 @@ const Electronics = ({ handleCategoryChange }) => {
   return (
     <div>
       <h2>Electronics</h2>
-      <Smartphones />
-      <Laptops />
+      <div className="smartphones-electronics">
+        <h2>Smartphones</h2>
+        <Smartphones />
+      </div>
+      <div className="laptops-electronics">
+        <h2>Laptops</h2>
+        <Laptops />
+      </div>
     </div>
   );
 };

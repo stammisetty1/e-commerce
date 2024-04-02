@@ -36,9 +36,38 @@
   overflow-x: auto;
 }
 
+.product-category {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-category h1,
+.product-category button {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.product-category h1{
+  margin-left: 2rem;
+}
+
+.product-category button {
+  margin-right: 8rem; 
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  font-size: large;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.product-category button:hover {
+  text-decoration: underline;
+}
+
 .product-card {
   width: 250px;
-  /* height: auto; */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
@@ -114,24 +143,67 @@
 
 /* products */
 .products-body {
+  top: 200px;
+  display: flex;
   padding: 35px;
   align-items: center;
-  justify-content: space-between;
-
+  justify-content: center;
+  margin-left: 4rem;
 }
 
+.products-list .smartphones-electronics,
+.products-list .laptops-electronics,
+.products-list .mshirts-fashion,
+.products-list .tops-fashion,
+.products-list .sunglasses-fashion,
+.products-list .wshoes-fashion,
+.products-list .mshoes-fashion,
+.products-list .wbags-fashion,
+.products-list .wdresses-fashion,
+.products-list .wjewellery-fashion,
+.products-list .homedecor-homedecoration,
+.products-list .lighting-homedecoration,
+.products-list .furniture-homedecoration,
+.products-list .fragrances-personalcare,
+.products-list .skincare-personalcare,
+.products-list .wwatches-accessories,
+.products-list .mwatches-accessories,
+.products-list .automotive-automotives,
+.products-list .motorcycle-automotives{
+  margin-left: 2rem;
+  padding: 5px;
+  border-bottom: 2px solid black;
+}
 
-.product-list .card {
-  width: 250px;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease-in-out;
+.products-list .smartphones-container,
+.products-list .laptops-container,
+.products-list .mshirts-container,
+.products-list .tops-container,
+.products-list .glasses-container,
+.products-list .wshoes-container,
+.products-list .mshoes-container,
+.products-list .wbags-container,
+.products-list .wdresses-container,
+.products-list .jew-container,
+.products-list .decoration-container,
+.products-list .lighting-container,
+.products-list .furniture-container,
+.products-list .fragrence-container,
+.products-list .skincare-container,
+.products-list .mens-watches-container,
+.products-list .womens-watches-container,
+.products-list .automotives-container,
+.products-list .motorcycles-container
+{
   display: flex;
-  flex-direction: column;
+  vertical-align: baseline;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  min-height: 270px;
+  overflow: hidden;
 }
+
 
 .product-list .card:hover {
   transform: translateY(-10px);
@@ -585,20 +657,6 @@
   word-break: break-all;
 }
 
-/* Smartphones */
-
-
-.smartphones-container .card {
-
-}
-
-.smartphones-container .card:hover {
-}
-
-.smartphones-container .card img {
-
-}
-
 /* footer */
 
 .footer {
@@ -633,4 +691,36 @@
 
 .developer-link:hover {
   color: #ccc;
+}
+
+/* modal.css */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  width: 80%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.modal button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
 }

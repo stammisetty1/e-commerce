@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Tops = () => {
   const [tops, setTops] = useState([]);
@@ -9,7 +9,6 @@ const Tops = () => {
   const handleCardClick = (id) => {
     navigate(`/products/${id}`);
   };
-
 
   // Fetch products from the dummy API
   useEffect(() => {
@@ -30,16 +29,21 @@ const Tops = () => {
         <div>Error: {error}</div>
       ) : (
         <div className="tops-container">
-         { Array.isArray(tops) && tops.map((top) => (
-                <div className="card" key={top.id} onClick={() => handleCardClick(top.id)}>
+          {Array.isArray(tops) &&
+            tops.map((top) => (
+              <div
+                className="product-card"
+                key={top.id}
+                onClick={() => handleCardClick(top.id)}
+              >
                 <img src={top.thumbnail} alt={`Thumbnail for ${top.title}`} />
-                    <div className="card-info">
-                        <h3>{top.title}</h3>
-                    </div>
+                  <h3>{top.title}</h3>
+                  <p>Price: ${tops.price}</p>
+                  <button>Add to Cart</button>{" "}
                 </div>
             ))}
         </div>
-)}
+      )}
     </div>
   );
 };

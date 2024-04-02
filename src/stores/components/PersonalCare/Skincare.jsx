@@ -31,11 +31,11 @@ const Skincare = () => {
       ) : (
         <div className="skincare-container">
          { Array.isArray(skincares) && skincares.map((skincare) => (
-                <div className="card" key={skincare.id} onClick={() => handleCardClick(skincare.id)}>
+                <div className="product-card" key={skincare.id} onClick={() => handleCardClick(skincare.id)}>
                 <img src={skincare.thumbnail} alt={`Thumbnail for ${skincare.title}`} />
-                    <div className="card-info">
                         <h3>{skincare.title}</h3>
-                    </div>
+                        <p>Price: ${skincare.price}</p>
+                  <button>Add to Cart</button>{" "}
                 </div>
             ))}
         </div>

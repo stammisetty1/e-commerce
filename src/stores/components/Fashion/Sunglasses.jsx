@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Sunglasses = () => {
   const [glasses, setGlasses] = useState([]);
@@ -9,7 +9,6 @@ const Sunglasses = () => {
   const handleCardClick = (id) => {
     navigate(`/products/${id}`);
   };
-
 
   // Fetch products from the dummy API
   useEffect(() => {
@@ -30,16 +29,24 @@ const Sunglasses = () => {
         <div>Error: {error}</div>
       ) : (
         <div className="glasses-container">
-         { Array.isArray(glasses) && glasses.map((glass) => (
-                <div className="card" key={glass.id} onClick={() => handleCardClick(glass.id)}>
-                <img src={glass.thumbnail} alt={`Thumbnail for ${glass.title}`} />
-                    <div className="card-info">
-                        <h3>{glass.title}</h3>
-                    </div>
-                </div>
+          {Array.isArray(glasses) &&
+            glasses.map((glass) => (
+              <div
+                className="product-card"
+                key={glass.id}
+                onClick={() => handleCardClick(glass.id)}
+              >
+                <img
+                  src={glass.thumbnail}
+                  alt={`Thumbnail for ${glass.title}`}
+                />
+                  <h3>{glass.title}</h3>
+                  <p>Price: ${glass.price}</p>
+                  <button>Add to Cart</button>{" "}
+              </div>
             ))}
         </div>
-)}
+      )}
     </div>
   );
 };

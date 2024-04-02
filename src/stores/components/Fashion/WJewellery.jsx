@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const WJewellery = () => {
   const [jews, setJew] = useState([]);
@@ -10,10 +10,9 @@ const WJewellery = () => {
     navigate(`/products/${id}`);
   };
 
-
   // Fetch products from the dummy API
   useEffect(() => {
-    fetch("https://dummyjson.com/products/category/womens-jewllery")
+    fetch("https://dummyjson.com/products/category/womens-jewellery")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch Womens Jewellery");
@@ -30,16 +29,21 @@ const WJewellery = () => {
         <div>Error: {error}</div>
       ) : (
         <div className="jew-container">
-         { Array.isArray(jews) && jews.map((jew) => (
-                <div className="card" key={jew.id} onClick={() => handleCardClick(jew.id)}>
+          {Array.isArray(jews) &&
+            jews.map((jew) => (
+              <div
+                className="product-card"
+                key={jew.id}
+                onClick={() => handleCardClick(jew.id)}
+              >
                 <img src={jew.thumbnail} alt={`Thumbnail for ${jew.title}`} />
-                    <div className="card-info">
-                        <h3>{jew.title}</h3>
-                    </div>
-                </div>
+                  <h3>{jew.title}</h3>
+                  <p>Price: ${jew.price}</p>
+                  <button>Add to Cart</button>{" "}
+              </div>
             ))}
         </div>
-)}
+      )}
     </div>
   );
 };
