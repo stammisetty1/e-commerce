@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Laptops = () => {
+const Laptops = ({ addToCart }) => {
   const [laptops, setLaptops] = useState([]);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -23,25 +23,31 @@ const Laptops = () => {
       .catch((error) => setError(error.message));
   }, []);
 
+  const handleAddToCart = (event, item) => {
+    addToCart(item);
+    event.stopPropagation();
+  };
+
   return (
     <div>
       {error ? (
         <div>Error: {error}</div>
       ) : (
         <div className="laptops-container">
-          {Array.isArray(laptops) &&
-            laptops.map((laptop) => (
-              <div
-                className="product-card"
-                key={laptop.id}
-                onClick={() => handleCardClick(laptop.id)}
-              >
-                  <img src={laptop.thumbnail} alt={laptop.title} />
-                  <h3>{laptop.title}</h3>
-                  <p>Price: ${laptop.price}</p>
-                  <button>Add to Cart</button>
-              </div>
-            ))}
+          {laptops.map((laptop, index) => (
+            <div
+              className="product-card"
+              key={laptop.id || index} // Use index as fallback key
+              onClick={() => handleCardClick(laptop.id)}
+            >
+              <img src={laptop.thumbnail} alt={laptop.title} />
+              <h3>{laptop.title}</h3>
+              <p>Price: ${laptop.price}</p>
+              <button onClick={(event) => handleAddToCart(event, laptop)}>
+                Add to Cart
+              </button>
+            </div>
+          ))}
         </div>
       )}
     </div>

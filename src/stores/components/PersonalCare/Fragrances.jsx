@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-
-const Fragrances = () => {
+const Fragrances = ({ addToCart }) => {
   const [fragrances, setFragrances] = useState([]);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -10,7 +9,6 @@ const Fragrances = () => {
   const handleCardClick = (id) => {
     navigate(`/products/${id}`);
   };
-
 
   // Fetch products from the dummy API
   useEffect(() => {
@@ -25,22 +23,37 @@ const Fragrances = () => {
       .catch((error) => setError(error.message));
   }, []);
 
+  const handleAddToCart = (event, item) => {
+    addToCart(item);
+    event.stopPropagation();
+  };
+
   return (
     <div>
       {error ? (
         <div>Error: {error}</div>
       ) : (
         <div className="fragrence-container">
-         { Array.isArray(fragrances) && fragrances.map((fragrance) => (
-                <div className="product-card" key={fragrance.id} onClick={() => handleCardClick(fragrance.id)}>
-                <img src={fragrance.thumbnail} alt={`Thumbnail for ${fragrance.title}`} />
-                        <h3>{fragrance.title}</h3>
-                        <p>Price: ${fragrance.price}</p>
-                  <button>Add to Cart</button>{" "}
-                </div>
+          {Array.isArray(fragrances) &&
+            fragrances.map((fragrance) => (
+              <div
+                className="product-card"
+                key={fragrance.id}
+                onClick={() => handleCardClick(fragrance.id)}
+              >
+                <img
+                  src={fragrance.thumbnail}
+                  alt={`Thumbnail for ${fragrance.title}`}
+                />
+                <h3>{fragrance.title}</h3>
+                <p>Price: ${fragrance.price}</p>
+                <button onClick={(event) => handleAddToCart(event, fragrance)}>
+                  Add to Cart
+                </button>{" "}
+              </div>
             ))}
         </div>
-)}
+      )}
     </div>
   );
 };

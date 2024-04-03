@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 const SubHeader = () => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
@@ -13,27 +12,56 @@ const SubHeader = () => {
 
   return (
     <div className="subHeader">
-      <div className="leftGroup">
-        <button
-          onMouseEnter={() => setShowModal(true)}
-          onMouseOut={(e) => {
-            if (!e.relatedTarget || !e.relatedTarget.closest(".modal")) {
-              setShowModal(false);
-            }
-          }}
-        >
-          Categories
-        </button>
-        {showModal && <div className="categories-container"></div>}
-      </div>
-      <div className="rightGroup">
-        <button onClick={() => handleClick("electronics")}>Electronics</button>
-        <button onClick={() => handleClick("fashion")}>Fashion</button>
-        <button onClick={() => handleClick("personalcare")}>Personal Care</button>
-        <button onClick={() => handleClick("homedecoration")}>Home Decoration</button>
-        <button onClick={() => handleClick("accessories")}>Accessories</button>
-        <button onClick={() => handleClick("automotives")}>Automotives</button>
-
+      <div className="subHeaderInner">
+        <a className="subHeaderItem-a" href="/products?view=electronics">
+          <div className="subHeaderItem">
+            <span style={{ fontWeight: 500, color: "rgb(29, 29, 29)" }}>
+              Electronics
+            </span>
+          </div>
+        </a>
+        <a className="subHeaderItem-a" href="/products?view=fashion">
+          <div className="subHeaderItem">
+            <span style={{ fontWeight: 300, color: "rgb(29, 29, 29)" }}>
+              Fashion
+            </span>
+          </div>
+        </a>
+        <a className="subHeaderItem-a" href="/products?view=personalcare">
+          <div className="subHeaderItem">
+            <span style={{ fontWeight: 300, color: "rgb(29, 29, 29)" }}>
+              Personal Care
+            </span>
+          </div>
+        </a>
+        <a className="subHeaderItem-a" href="/products?view=homeandliving">
+          <div className="subHeaderItem">
+            <span style={{ fontWeight: 300, color: "rgb(29, 29, 29)" }}>
+              Home And Living
+            </span>
+          </div>
+        </a>
+        <a className="subHeaderItem-a" href="/products?view=accessories">
+          <div className="subHeaderItem">
+            <span style={{ fontWeight: 300, color: "rgb(29, 29, 29)" }}>
+              Accessories
+            </span>
+          </div>
+        </a>
+        <a className="subHeaderItem-a" href="/products?view=automotives">
+          <div className="subHeaderItem">
+            <span style={{ fontWeight: 300, color: "rgb(29, 29, 29)" }}>
+              Automotives
+            </span>
+          </div>
+        </a>
+        <a className="subHeaderItem-a" href="/products?view=footwear">
+          <div className="subHeaderItem">
+            <span style={{ fontWeight: 300, color: "rgb(29, 29, 29)" }}>
+              Footwear
+            </span>
+          </div>
+        </a>
       </div>
     </div>
   );

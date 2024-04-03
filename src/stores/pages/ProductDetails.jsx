@@ -2,15 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Header from "../components/Headers/Header";
 import SubHeader from "../components/Headers/SubHeader";
-import Notification from "../components/Notification";
+import Footer from "../components/Headers/Footer";
 
-const ProductDetails = ({ item, addToCart }) => {
+const ProductDetails = ({ addToCart, setShowMiniCart }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const fetchProductDetails = async () => {
@@ -30,11 +29,7 @@ const ProductDetails = ({ item, addToCart }) => {
 
   const handleAddToCart = (item) => {
     addToCart(item);
-    setShowModal(true); // Show the modal
-  };
-
-  const closeModal = () => {
-    setShowModal(false); // Hide the modal
+    setShowMiniCart(true);
   };
 
   const handleCheckout = () => {
@@ -66,13 +61,14 @@ const ProductDetails = ({ item, addToCart }) => {
           <p className="price">Price: ${product.price}</p>
           <p className="description">{product.description}</p>
           <div className="product-actions">
-          <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
+            <button onClick={() => handleAddToCart(product)}>
+              Add to Cart
+            </button>
             <button onClick={handleCheckout}>Checkout</button>
-            {showModal && <Notification itemTitle={product.title} closeModal={closeModal} />}
           </div>
-          <Notification itemTitle={"assfd"} closeModal={false}/>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

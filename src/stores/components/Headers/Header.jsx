@@ -8,11 +8,11 @@ const Header = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    let url = "/search?query=";
-    if (searchOption !== "all") {
-      url += `${searchOption}:${searchQuery}`;
+    let url = "/search";
+    if (searchOption === "all") {
+      url += `?query=${searchQuery}`;
     } else {
-      url += searchQuery;
+      url += `?category=${searchOption}&value=${searchQuery}`;
     }
     // Redirect to the search results page with the constructed URL
     navigate(url);
@@ -35,7 +35,7 @@ const Header = () => {
   };
 
   const handleCartClick = () => {
-    navigate('/cart');
+    navigate("/cart");
   };
 
   return (
@@ -51,8 +51,21 @@ const Header = () => {
             onChange={(e) => setSearchOption(e.target.value)}
           >
             <option value="all">All</option>
-            <option value="name">Name</option>
-            <option value="category">Category</option>
+            <option value="smartphones">Smartphones</option>
+            <option value="laptops">Laptops</option>
+            <option value="fragrances">Fragrances</option>
+            <option value="skincare">Skincare</option>
+            <option value="groceries">Groceries</option>
+            <option value="home-decoration">HomeDecoration</option>
+            <option value="furniture">Furniture</option>
+            <option value="tops">Tops</option>
+            <option value="womens-dresses">Women's Dresses</option>
+            <option value="womens-bags">Women's Bags</option>
+            <option value="womens-jewellery">Women's Jewellery</option>
+            <option value="sunglasses">Sun Glasses</option>
+            <option value="lighting">Lighting</option>
+            <option value="automotive">Automotive</option>
+            <option value="motorcycle">Motorcycle</option>
           </select>
           <input
             type="text"
@@ -66,7 +79,9 @@ const Header = () => {
         </form>
       </div>
       <div className="user">
-        <div className="cart" onClick={handleCartClick}>Cart</div>
+        <div className="cart" onClick={handleCartClick}>
+          Cart
+        </div>
         <div className="userDetail">SignIn/SignUp</div>
       </div>
     </div>

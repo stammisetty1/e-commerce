@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const MShirts = () => {
+const MShirts = ({ addToCart }) => {
   const [shirts, setShirts] = useState([]);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -23,6 +23,11 @@ const MShirts = () => {
       .catch((error) => setError(error.message));
   }, []);
 
+  const handleAddToCart = (event, item) => {
+    addToCart(item);
+    event.stopPropagation();
+  };
+
   return (
     <div>
       {error ? (
@@ -42,7 +47,9 @@ const MShirts = () => {
                 />
                 <h3>{shirt.title}</h3>
                 <p>Price: ${shirt.price}</p>
-                <button>Add to Cart</button>{" "}
+                <button onClick={(event) => handleAddToCart(event, shirt)}>
+                  Add to Cart
+                </button>{" "}
               </div>
             ))}
         </div>

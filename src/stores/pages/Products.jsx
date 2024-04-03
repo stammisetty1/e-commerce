@@ -4,13 +4,14 @@ import Header from "../components/Headers/Header";
 import SubHeader from "../components/Headers/SubHeader";
 import Electronics from "../components/Electronics";
 import Fashion from "../components/Fashion";
-import HomeDecoration from "../components/HomeDecoration";
+import HomeAndLiving from "../components/HomeAndLiving";
 import Accessories from "../components/Accessories";
 import PersonalCare from "../components/PersonalCare";
 import Automotives from "../components/Automotives";
 import Footer from "../components/Headers/Footer";
+import Footwear from "../components/Footwear";
 
-const Products = ({ item, addToCart }) => {
+const Products = ({ addToCart }) => {
   const location = useLocation();
   const [currentView, setCurrentView] = useState(null);
 
@@ -31,32 +32,37 @@ const Products = ({ item, addToCart }) => {
       <div className="products-body">
         {currentView === "electronics" && (
           <div className="products-list">
-            <Electronics />
+            <Electronics addToCart={addToCart} />
           </div>
         )}
         {currentView === "fashion" && (
           <div className="products-list">
-            <Fashion />
+            <Fashion addToCart={addToCart} />
           </div>
         )}
-        {currentView === "homedecoration" && (
+        {currentView === "homeandliving" && (
           <div className="products-list">
-            <HomeDecoration />
+            <HomeAndLiving addToCart={addToCart} />
           </div>
         )}
         {currentView === "personalcare" && (
           <div className="products-list">
-            <PersonalCare />
+            <PersonalCare addToCart={addToCart} />
           </div>
         )}
         {currentView === "accessories" && (
           <div className="products-list">
-            <Accessories />
+            <Accessories addToCart={addToCart} />
+          </div>
+        )}
+        {currentView === "footwear" && (
+          <div className="products-list">
+            <Footwear addToCart={addToCart} />
           </div>
         )}
         {currentView === "automotives" && (
           <div className="products-list">
-            <Automotives />
+            <Automotives addToCart={addToCart} />
           </div>
         )}
       </div>

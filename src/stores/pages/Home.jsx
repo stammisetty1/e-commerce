@@ -5,7 +5,7 @@ import SubHeader from "../components/Headers/SubHeader";
 import CarouselComp from "../components/CarouselComp";
 import Footer from "../components/Headers/Footer";
 
-const Home = ({ item, addToCart }) => {
+const Home = ({ addToCart }) => {
   const navigate = useNavigate();
   const [homePageElectronics, setHomePageElectronics] = useState([]);
 
@@ -15,7 +15,9 @@ const Home = ({ item, addToCart }) => {
 
   const [homePageFashion, setHomePageFashion] = useState([]);
 
-  const [homePageHomeDecoration, setHomePageHomeDecoration] = useState([]);
+  const [homePageFootwear, setHomePageFootwear] = useState([]);
+
+  const [homePageHomeAndLiving, setHomePageHomeAndLiving] = useState([]);
 
   const [homePagePersonalCare, setHomePagePersonalCare] = useState([]);
 
@@ -51,18 +53,13 @@ const Home = ({ item, addToCart }) => {
 
         const [
           mensShirtsResp,
-          mensShoesResp,
           sunglassesResp,
           topsResp,
           womensBagsResp,
           womensDressesResp,
           womensJewelleryResp,
-          womensShoesResp,
         ] = await Promise.all([
           fetch("https://dummyjson.com/products/category/mens-shirts").then(
-            (res) => res.json()
-          ),
-          fetch("https://dummyjson.com/products/category/mens-shoes").then(
             (res) => res.json()
           ),
           fetch("https://dummyjson.com/products/category/sunglasses").then(
@@ -80,13 +77,30 @@ const Home = ({ item, addToCart }) => {
           fetch(
             "https://dummyjson.com/products/category/womens-jewellery"
           ).then((res) => res.json()),
+        ]);
+
+        const [mensShoesResp, womensShoesResp] = await Promise.all([
+          fetch("https://dummyjson.com/products/category/mens-shoes").then(
+            (res) => res.json()
+          ),
           fetch("https://dummyjson.com/products/category/womens-shoes").then(
             (res) => res.json()
           ),
         ]);
 
-        const [furnitureResp, homeDecorationResp, lightingResp] =
+        const allFootwear = [
+          ...mensShoesResp.products,
+          ...womensShoesResp.products,
+        ];
+        setHomePageFootwear(
+          allFootwear.sort(() => Math.random() - 0.5).slice(0, 5)
+        );
+
+        const [groceriesResp, furnitureResp, homeDecorationResp, lightingResp] =
           await Promise.all([
+            fetch("https://dummyjson.com/products/category/groceries").then(
+              (res) => res.json()
+            ),
             fetch("https://dummyjson.com/products/category/furniture").then(
               (res) => res.json()
             ),
@@ -145,26 +159,25 @@ const Home = ({ item, addToCart }) => {
 
         const allFashion = [
           ...mensShirtsResp.products,
-          ...mensShoesResp.products,
           ...sunglassesResp.products,
           ...topsResp.products,
           ...womensBagsResp.products,
           ...womensDressesResp.products,
           ...womensJewelleryResp.products,
-          ...womensShoesResp.products,
         ];
 
         setHomePageFashion(
           allFashion.sort(() => Math.random() - 0.5).slice(0, 5)
         );
 
-        const allHomeDecoration = [
+        const allHomeAndLiving = [
+          ...groceriesResp.products,
           ...lightingResp.products,
           ...homeDecorationResp.products,
           ...furnitureResp.products,
         ];
-        setHomePageHomeDecoration(
-          allHomeDecoration.sort(() => Math.random() - 0.5).slice(0, 5)
+        setHomePageHomeAndLiving(
+          allHomeAndLiving.sort(() => Math.random() - 0.5).slice(0, 5)
         );
       } catch (error) {
         console.error("Error fetching electronics:", error);
@@ -206,9 +219,12 @@ const Home = ({ item, addToCart }) => {
               onClick={() => handleProductClick(product.id)}
             >
               <img src={product.thumbnail} alt={product.title} />
+              <div className="product-card divider"></div>
               <h3>{product.title}</h3>
               <p>Price: ${product.price}</p>
-              <button onClick={(event) => handleAddToCart(event, product)}>Add to Cart</button>
+              <button onClick={(event) => handleAddToCart(event, product)}>
+                Add to Cart
+              </button>
             </div>
           ))}
         </div>
@@ -227,13 +243,13 @@ const Home = ({ item, addToCart }) => {
               <h3>{product.title}</h3>
               <p>Price: ${product.price}</p>
               <button onClick={(event) => handleAddToCart(event, product)}>
-                <span> Add to Cart </span>
+                Add to Cart
               </button>
             </div>
           ))}
         </div>
         <div className="product-category">
-        <h1 onClick={() => handleSeeAll("personalcare")}>PersonalCare</h1>
+          <h1 onClick={() => handleSeeAll("personalcare")}>PersonalCare</h1>
           <button onClick={() => handleSeeAll("personalcare")}>See All</button>
         </div>
         <div className="products-home">
@@ -246,12 +262,14 @@ const Home = ({ item, addToCart }) => {
               <img src={product.thumbnail} alt={product.title} />
               <h3>{product.title}</h3>
               <p>Price: ${product.price}</p>
-              <button onClick={(event) => handleAddToCart(event, product)}>Add to Cart</button>
+              <button onClick={(event) => handleAddToCart(event, product)}>
+                Add to Cart
+              </button>
             </div>
           ))}
         </div>
         <div className="product-category">
-        <h1 onClick={() => handleSeeAll("accessories")}>Accessories</h1>
+          <h1 onClick={() => handleSeeAll("accessories")}>Accessories</h1>
           <button onClick={() => handleSeeAll("accessories")}>See All</button>
         </div>
         <div className="products-home">
@@ -264,16 +282,18 @@ const Home = ({ item, addToCart }) => {
               <img src={product.thumbnail} alt={product.title} />
               <h3>{product.title}</h3>
               <p>Price: ${product.price}</p>
-              <button onClick={(event) => handleAddToCart(event, product)}>Add to Cart</button>
+              <button onClick={(event) => handleAddToCart(event, product)}>
+                Add to Cart
+              </button>
             </div>
           ))}
         </div>
         <div className="product-category">
-        <h1 onClick={() => handleSeeAll("homedecoration")}>Home Decoration</h1>
-          <button onClick={() => handleSeeAll("homedecoration")}>See All</button>
+          <h1 onClick={() => handleSeeAll("homeandliving")}>Home And Living</h1>
+          <button onClick={() => handleSeeAll("homeandliving")}>See All</button>
         </div>
         <div className="products-home">
-          {homePageHomeDecoration.map((product) => (
+          {homePageHomeAndLiving.map((product) => (
             <div
               key={product.id}
               className="product-card"
@@ -282,12 +302,34 @@ const Home = ({ item, addToCart }) => {
               <img src={product.thumbnail} alt={product.title} />
               <h3>{product.title}</h3>
               <p>Price: ${product.price}</p>
-              <button onClick={(event) => handleAddToCart(event, product)}>Add to Cart</button>
+              <button onClick={(event) => handleAddToCart(event, product)}>
+                Add to Cart
+              </button>
             </div>
           ))}
         </div>
         <div className="product-category">
-        <h1 onClick={() => handleSeeAll("automotives")}>Automotives</h1>
+          <h1 onClick={() => handleSeeAll("footwear")}>Footwear</h1>
+          <button onClick={() => handleSeeAll("footwear")}>See All</button>
+        </div>
+        <div className="products-home">
+          {homePageFootwear.map((product) => (
+            <div
+              key={product.id}
+              className="product-card"
+              onClick={() => handleProductClick(product.id)}
+            >
+              <img src={product.thumbnail} alt={product.title} />
+              <h3>{product.title}</h3>
+              <p>Price: ${product.price}</p>
+              <button onClick={(event) => handleAddToCart(event, product)}>
+                Add to Cart
+              </button>
+            </div>
+          ))}
+        </div>
+        <div className="product-category">
+          <h1 onClick={() => handleSeeAll("automotives")}>Automotives</h1>
           <button onClick={() => handleSeeAll("automotives")}>See All</button>
         </div>
         <div className="products-home">
@@ -300,7 +342,9 @@ const Home = ({ item, addToCart }) => {
               <img src={product.thumbnail} alt={product.title} />
               <h3>{product.title}</h3>
               <p>Price: ${product.price}</p>
-              <button onClick={(event) => handleAddToCart(event, product)}>Add to Cart</button>
+              <button onClick={(event) => handleAddToCart(event, product)}>
+                Add to Cart
+              </button>
             </div>
           ))}
         </div>

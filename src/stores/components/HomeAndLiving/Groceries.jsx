@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Tops = ({ addToCart }) => {
-  const [tops, setTops] = useState([]);
+const Groceries = ({ addToCart }) => {
+  const [groceries, setGroceries] = useState([]);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -12,14 +12,14 @@ const Tops = ({ addToCart }) => {
 
   // Fetch products from the dummy API
   useEffect(() => {
-    fetch("https://dummyjson.com/products/category/tops")
+    fetch("https://dummyjson.com/products/category/groceries")
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Failed to fetch Tops");
+          throw new Error("Failed to fetch Furniture");
         }
         return response.json();
       })
-      .then((data) => setTops(data.products)) // Updated to use 'data.products'
+      .then((data) => setGroceries(data.products)) // Updated to use 'data.products'
       .catch((error) => setError(error.message));
   }, []);
 
@@ -33,18 +33,21 @@ const Tops = ({ addToCart }) => {
       {error ? (
         <div>Error: {error}</div>
       ) : (
-        <div className="tops-container">
-          {Array.isArray(tops) &&
-            tops.map((top) => (
+        <div className="groceries-container">
+          {Array.isArray(groceries) &&
+            groceries.map((grocery) => (
               <div
                 className="product-card"
-                key={top.id}
-                onClick={() => handleCardClick(top.id)}
+                key={grocery.id}
+                onClick={() => handleCardClick(grocery.id)}
               >
-                <img src={top.thumbnail} alt={`Thumbnail for ${top.title}`} />
-                <h3>{top.title}</h3>
-                <p>Price: ${tops.price}</p>
-                <button onClick={(event) => handleAddToCart(event, tops)}>
+                <img
+                  src={grocery.thumbnail}
+                  alt={`Thumbnail for ${grocery.title}`}
+                />
+                <h3>{grocery.title}</h3>
+                <p>Price: ${grocery.price}</p>
+                <button onClick={(event) => handleAddToCart(event, grocery)}>
                   Add to Cart
                 </button>{" "}
               </div>
@@ -55,4 +58,4 @@ const Tops = ({ addToCart }) => {
   );
 };
 
-export default Tops;
+export default Groceries;
