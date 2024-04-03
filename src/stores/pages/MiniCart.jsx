@@ -1,28 +1,16 @@
 import React, { useEffect } from "react";
 import emptycart from "../../imgs/emptycart.png";
+import { useNavigate } from "react-router-dom";
 
-const MiniCart = ({
-  isVisible,
-  cartItems,
-  removeFromCart,
-  goToCart,
-  closeMiniCart,
-}) => {
+const MiniCart = ({ isVisible, cartItems, removeFromCart, closeMiniCart }) => {
   const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
-  useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (isVisible && !event.target.closest(".modal-content")) {
-        closeMiniCart();
-      }
-    };
+  const navigate = useNavigate(); // Use useNavigate hook to get navigation function
 
-    document.addEventListener("click", handleOutsideClick);
-
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, [isVisible, closeMiniCart]);
-
+  const goToCart = () => {
+    closeMiniCart(); // Close the mini cart before navigating
+    navigate("/cart"); // Navigate to the cart page
+  };
+  
   return (
     <div className={`mini-cart ${isVisible ? "show" : ""}`}>
       <div className="modal-content">

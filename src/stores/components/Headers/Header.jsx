@@ -38,9 +38,13 @@ const Header = () => {
     navigate("/cart");
   };
 
+  const handleTitleClick = () => {
+    navigate("/");
+  };
+
   return (
     <div className="navSection">
-      <div className="title">
+      <div className="title" onClick={handleTitleClick}>
         <h2 className="logo">E-Commerce</h2>
       </div>
       <div id="search">

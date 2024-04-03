@@ -37,10 +37,6 @@ const App = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(showMiniCart);
-  }, [showMiniCart]);
-
   const removeFromCart = (id) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== id);
     setCartItems(updatedCartItems);
@@ -65,15 +61,21 @@ const App = () => {
     setShowMiniCart(false);
   };
 
-  const goToCart = () => {
-    console.log("Navigte");
-    return <Navigate to="/cart" />;
-  };
 
   return (
     <Router>
       <div className="app-home">
         <Routes>
+          <Route path="/" element={<Home addToCart={addToCart} />} />
+          <Route
+            path="/products"
+            element={<Products addToCart={addToCart} />}
+          />
+          <Route
+            path="/products/:id"
+            element={<ProductDetails addToCart={addToCart} />}
+          />
+          <Route path="/search" element={<SearchResults />} />
           <Route
             path="/cart"
             element={
@@ -86,28 +88,13 @@ const App = () => {
               </>
             }
           />
-          <Route path="/" element={<Home addToCart={addToCart} />} />
-          <Route
-            path="/products"
-            element={<Products addToCart={addToCart} />}
-          />
-          <Route
-            path="/products/:id"
-            element={
-              <ProductDetails
-                addToCart={addToCart}
-                setShowMiniCart={setShowMiniCart}
-              />
-            }
-          />
-          <Route path="/search" element={<SearchResults />} />
         </Routes>
+        {console.log("out", showMiniCart)}
         {showMiniCart && (
           <MiniCart
             isVisible={showMiniCart}
             cartItems={cartItems}
             removeFromCart={removeFromCart}
-            goToCart={goToCart}
             closeMiniCart={closeMiniCart}
           />
         )}

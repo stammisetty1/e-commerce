@@ -44,7 +44,7 @@ const WJewellery = ({ addToCart }) => {
                 <img src={jew.thumbnail} alt={`Thumbnail for ${jew.title}`} />
                 <h3>{jew.title}</h3>
                 <p>Price: ${jew.price}</p>
-                <button onClick={(event) => handleAddToCart(event, jew)}>
+                <button className="add-to-cart" onClick={(event) => handleAddToCart(event, jew)}>
                   Add to Cart
                 </button>{" "}
               </div>

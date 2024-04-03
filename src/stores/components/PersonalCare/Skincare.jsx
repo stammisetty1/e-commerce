@@ -47,7 +47,7 @@ const Skincare = ({ addToCart }) => {
                 />
                 <h3>{skincare.title}</h3>
                 <p>Price: ${skincare.price}</p>
-                <button onClick={(event) => handleAddToCart(event, skincare)}>
+                <button className="add-to-cart" onClick={(event) => handleAddToCart(event, skincare)}>
                   Add to Cart
                 </button>{" "}
               </div>

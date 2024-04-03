@@ -47,7 +47,7 @@ const HomeDecor = ({ addToCart }) => {
                 />
                 <h3>{decor.title}</h3>
                 <p>Price: ${decor.price}</p>
-                <button onClick={(event) => handleAddToCart(event, decor)}>
+                <button className="add-to-cart" onClick={(event) => handleAddToCart(event, decor)}>
                   Add to Cart
                 </button>{" "}
               </div>

@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import Header from "../components/Headers/Header";
 import SubHeader from "../components/Headers/SubHeader";
+import Footer from "../components/Headers/Footer";
 
 const SearchResults = () => {
   const [searchParams] = useSearchParams();
@@ -65,12 +66,17 @@ const SearchResults = () => {
       <SubHeader />
       <div className="search-results-container">
         <h1>Search Results</h1>
-        <div className="product-grid">
-          {searchResults.map((searchResult) => (
-            <ProductCard key={searchResult.id} product={searchResult} />
-          ))}
-        </div>
+        {searchResults.length === 0 ? (
+          <p>No results found.</p>
+        ) : (
+          <div className="search-results-products">
+            {searchResults.map((searchResult) => (
+              <ProductCard key={searchResult.id} product={searchResult} />
+            ))}
+          </div>
+        )}
       </div>
+      <Footer />
     </div>
   );
 };

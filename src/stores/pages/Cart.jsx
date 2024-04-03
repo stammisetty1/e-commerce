@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Headers/Header";
 import SubHeader from "../components/Headers/SubHeader";
+import Footer from "../components/Headers/Footer";
 
 const Cart = ({ cartItems, removeFromCart, updateCartQuantity }) => {
   const navigate = useNavigate();
@@ -92,6 +93,7 @@ const Cart = ({ cartItems, removeFromCart, updateCartQuantity }) => {
           </>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

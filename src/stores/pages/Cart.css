@@ -8,6 +8,8 @@
   max-width: 80%;
   flex-direction: column;
   margin-left: 10%;
+  min-height: 75vh;
+  margin-top: 2rem;
 }
 
 .cart-page h1 {

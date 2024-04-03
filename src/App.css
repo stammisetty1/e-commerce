@@ -9,7 +9,6 @@
 /* Home */
 .home-body {
   padding: 20px;
-  top: 500px;
   background-color: #e0e0e0;
 }
 
@@ -31,6 +30,7 @@
 .subHeader {
   position: relative;
   z-index: 5;
+  margin-top: 120px;
   margin-bottom: 1px;
   height: 40px;
   display: flex;
@@ -285,23 +285,45 @@
 
 /* Product details */
 
-.product-details-container {
+.product-details-body{
+  padding: 35px;
+  margin-left: 4rem;
+}
+
+.recommended-products-container{
+  padding: 35px;
   display: flex;
+  flex-direction: column;
+  vertical-align: baseline;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 2rem;
+  gap: 2rem;
+  min-height: 270px;
+  overflow: hidden;
+}
+
+.recommended-products-container .add-to-cart{
+  display: none;
+}
+
+.product-details-container {
+  padding: 35px;
+  display: flex;
+  flex-direction: row;
+  right: 4rem;
+  justify-content:flex-start;
 }
 
 .product-image {
   flex: 0 0 auto;
   width: 100%;
   max-width: 500px;
-  margin-right: 2rem;
+  margin-right: 10rem;
 }
 
 .product-image img {
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: 8px;
 }
 
@@ -364,6 +386,7 @@
 /* Header */
 .navSection {
   background-color: #4f245e;
+  position: fixed;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -508,37 +531,31 @@
   color: #333;
 }
 
-/* Add more styles as needed */
-
-/* CategoriesModal.css */
-
-.categories-container-smartphones {
-  margin-top: auto;
+.smartphones-container,
+.laptops-container,
+.mshirts-container,
+.tops-container,
+.glasses-container,
+.wshoes-container,
+.mshoes-container,
+.wbags-container,
+.wdresses-container,
+.jew-container,
+.groceries-container,
+.decoration-container,
+.lighting-container,
+.furniture-container,
+.fragrence-container,
+.skincare-container,
+.mens-watches-container,
+.womens-watches-container,
+.automotives-container,
+.motorcycles-container
+ {
   display: flex;
   overflow-x: hidden;
   padding: 10px 20px;
-  animation: scrollAnimation 10s linear infinite; /* Add the animation */
-}
-
-.categories-container-laptops {
-  display: flex;
-  overflow-x: hidden;
-  padding: 10px;
-  animation: scrollAnimation 10s linear infinite; /* Add the animation */
-}
-
-.categories-container-fragrances {
-  display: flex;
-  overflow-x: hidden;
-  padding: 10px;
-  animation: scrollAnimation 10s linear infinite; /* Add the animation */
-}
-
-.categories-container-skincare {
-  display: flex;
-  overflow-x: hidden;
-  padding: 10px;
-  animation: scrollAnimation 10s linear infinite; /* Add the animation */
+  gap: 2rem;
 }
 
 @keyframes scrollAnimation {
@@ -634,9 +651,8 @@
   padding: 20px 0;
   text-align: center;
   width: 100%;
-  position: absolute;
+  position: relative;
   bottom: 0;
-  position: sticky;
 }
 
 .footer-content {
@@ -770,4 +786,20 @@
 .empty-cart img {
   height: 200px;
   width: 200px;
+}
+
+
+.search-results-container {
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  min-height: 75vh;
+}
+
+.search-results-products{
+  padding: 35px;
+}
+
+.search-results-products button{
+  display: none;
 }
