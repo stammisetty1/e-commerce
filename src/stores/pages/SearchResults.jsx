@@ -4,6 +4,7 @@ import ProductCard from "../components/ProductCard";
 import Header from "../components/Headers/Header";
 import SubHeader from "../components/Headers/SubHeader";
 import Footer from "../components/Headers/Footer";
+import nosearchresults from "../../imgs/nosearchresults.png";
 
 const SearchResults = () => {
   const [searchParams] = useSearchParams();
@@ -67,7 +68,9 @@ const SearchResults = () => {
       <div className="search-results-container">
         <h1>Search Results</h1>
         {searchResults.length === 0 ? (
-          <p>No results found.</p>
+          <div className="no-search-results">
+            <img src={nosearchresults} alt="no search results" />
+          </div>
         ) : (
           <div className="search-results-products">
             {searchResults.map((searchResult) => (

@@ -1,12 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { Carousel, CarouselItem, CarouselCaption } from "react-bootstrap";
-import ecommerce1 from "../../imgs/e-commerce1.avif";
-import ecommerce2 from "../../imgs/e-commerce2.jpg";
-import ecommerce3 from "../../imgs/e-commerce3.jpg";
-import ecommerce4 from "../../imgs/e-commerce4.avif"
+import { useNavigate } from "react-router-dom";
+import electronics from "../../imgs/electronics.png";
+import fashion from "../../imgs/fashion.png";
+import personalcare from "../../imgs/personalcare.jpg";
+import footwear from "../../imgs/footwear.png";
+import automotives from "../../imgs/automotives.png";
+import accessories from "../../imgs/accessories.png";
+import homeandliving from "../../imgs/homeandliving.png";
+
 const CarouselComp = () => {
   const [quotes, setQuotes] = useState([]);
-  const images = [ecommerce1, ecommerce2, ecommerce3, ecommerce4];
+  const images = [
+    electronics,
+    fashion,
+    personalcare,
+    homeandliving,
+    footwear,
+    automotives,
+    accessories,
+  ];
+  
+  const categories= [
+    "Electronics",
+    "Fashion",
+    "Personal Care",
+    "Home And Living",
+    "Footwear",
+    "Automotives",
+    "Accessories",
+  ];
+  const navigate = useNavigate();
+
+  const handleSeeAll = (category) => {
+    navigate(`/products?view=${category.replace(/^.*[\\/]/, "").split(".")[0]}`);
+  };
 
   useEffect(() => {
     fetch("https://dummyjson.com/quotes")
@@ -23,7 +51,19 @@ const CarouselComp = () => {
     <Carousel className="carousel-container">
       {images.map((image, index) => (
         <CarouselItem key={index}>
-          <img className="carousel-img d-block w-100" src={image} alt={`Slide ${index + 1}`} />
+          <div className="carousel-item-container">
+            <img
+              className="carousel-img d-block w-100"
+              src={image}
+              alt={`Slide ${index + 1}`}
+            />
+            <button
+              className="shop-button"
+              onClick={() => handleSeeAll(images[index])}
+            >
+              Shop {categories[index]}
+            </button>
+          </div>
           <CarouselCaption className="carousel-caption">
             {quotes[index] && <p>{quotes[index].quote}</p>}
           </CarouselCaption>

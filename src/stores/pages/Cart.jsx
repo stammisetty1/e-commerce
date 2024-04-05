@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Headers/Header";
 import SubHeader from "../components/Headers/SubHeader";
 import Footer from "../components/Headers/Footer";
+import emptycart from "../../imgs/emptycart.png";
+
 
 const Cart = ({ cartItems, removeFromCart, updateCartQuantity }) => {
   const navigate = useNavigate();
@@ -27,8 +29,8 @@ const Cart = ({ cartItems, removeFromCart, updateCartQuantity }) => {
   };
 
   const handleCheckout = () => {
-    navigate("/checkout");
-  };
+    window.alert("Coming Soon...")
+    };
 
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.price * quantities[item.id],
@@ -42,9 +44,12 @@ const Cart = ({ cartItems, removeFromCart, updateCartQuantity }) => {
       <div className="cart-body">
         <h1>Cart</h1>
         {cartItems.length === 0 ? (
-          <div>
+          <div className="cart-empty">
+            <img src={emptycart} alt="emptycart"/>
+            <div>
             <p>Your cart is empty. Go shopping to add items.</p>
             <button onClick={() => navigate("/")}>Go Shopping</button>
+            </div>
           </div>
         ) : (
           <>
