@@ -740,6 +740,11 @@
   transition: background-color 0.4s;
 }
 
+.categories-menu-items:hover{
+  border-bottom: 2px solid #73abef;
+  color: #73abef;
+}
+
 .search-category-all {
   width: 130px;
   height: 26px;
