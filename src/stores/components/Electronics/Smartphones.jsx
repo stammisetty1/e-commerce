@@ -43,7 +43,10 @@ const Smartphones = ({ addToCart }) => {
                 <img src={smartphone.thumbnail} alt={smartphone.title} />
                 <h3>{smartphone.title}</h3>
                 <p>Price: ${smartphone.price}</p>
-                <button className="add-to-cart" onClick={(event) => handleAddToCart(event, smartphone)}>
+                <button
+                  className="add-to-cart"
+                  onClick={(event) => handleAddToCart(event, smartphone)}
+                >
                   Add to Cart
                 </button>{" "}
               </div>

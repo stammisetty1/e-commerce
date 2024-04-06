@@ -74,8 +74,8 @@ const Header = () => {
   }, []);
 
   const handleUserClick = () => {
-    window.alert("Coming soon...")
-  }
+    window.alert("Coming soon...");
+  };
 
   return (
     <div className="navSection">

@@ -44,7 +44,10 @@ const WBags = ({ addToCart }) => {
                 <img src={bag.thumbnail} alt={`Thumbnail for ${bag.title}`} />
                 <h3>{bag.title}</h3>
                 <p>Price: ${bag.price}</p>
-                <button className="add-to-cart" onClick={(event) => handleAddToCart(event, bag)}>
+                <button
+                  className="add-to-cart"
+                  onClick={(event) => handleAddToCart(event, bag)}
+                >
                   Add to Cart
                 </button>{" "}
               </div>

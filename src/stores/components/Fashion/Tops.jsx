@@ -44,7 +44,10 @@ const Tops = ({ addToCart }) => {
                 <img src={top.thumbnail} alt={`Thumbnail for ${top.title}`} />
                 <h3>{top.title}</h3>
                 <p>Price: ${tops.price}</p>
-                <button className="add-to-cart" onClick={(event) => handleAddToCart(event, tops)}>
+                <button
+                  className="add-to-cart"
+                  onClick={(event) => handleAddToCart(event, tops)}
+                >
                   Add to Cart
                 </button>{" "}
               </div>

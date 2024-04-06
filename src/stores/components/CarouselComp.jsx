@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Carousel, CarouselItem, CarouselCaption } from "react-bootstrap";
+import { FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import electronics from "../../imgs/electronics.png";
 import fashion from "../../imgs/fashion.png";
@@ -8,6 +9,7 @@ import footwear from "../../imgs/footwear.png";
 import automotives from "../../imgs/automotives.png";
 import accessories from "../../imgs/accessories.png";
 import homeandliving from "../../imgs/homeandliving.png";
+import { FaA } from "react-icons/fa6";
 
 const CarouselComp = () => {
   const [quotes, setQuotes] = useState([]);
@@ -20,20 +22,22 @@ const CarouselComp = () => {
     automotives,
     accessories,
   ];
-  
-  const categories= [
-    "Electronics",
-    "Fashion",
-    "Personal Care",
-    "Home And Living",
-    "Footwear",
-    "Automotives",
-    "Accessories",
+
+  const categories = [
+    "ELECTRONICS",
+    "FASHION",
+    "PERSONAL CARE",
+    "HOME AND LIVING",
+    "FOOTWEAR",
+    "AUTOMOTIVES",
+    "ACCESSORIES",
   ];
   const navigate = useNavigate();
 
   const handleSeeAll = (category) => {
-    navigate(`/products?view=${category.replace(/^.*[\\/]/, "").split(".")[0]}`);
+    navigate(
+      `/products?view=${category.replace(/^.*[\\/]/, "").split(".")[0]}`
+    );
   };
 
   useEffect(() => {
@@ -61,7 +65,10 @@ const CarouselComp = () => {
               className="shop-button"
               onClick={() => handleSeeAll(images[index])}
             >
-              Shop {categories[index]}
+              SHOP {categories[index]}
+              <span className="right-arrow" style={{ marginLeft: "1px" }}>
+                <FaArrowRight />
+              </span>
             </button>
           </div>
           <CarouselCaption className="carousel-caption">

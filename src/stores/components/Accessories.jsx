@@ -5,7 +5,6 @@ import WomensWatches from "./Accessories/WomensWatches";
 const Accessories = ({ addToCart }) => {
   return (
     <div>
-      <h2>Accessories</h2>
       <div className="wwatches-accessories">
         <h2>Women's Watches</h2>
         <WomensWatches addToCart={addToCart} />

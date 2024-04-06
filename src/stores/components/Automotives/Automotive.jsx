@@ -47,7 +47,10 @@ const Automotive = ({ addToCart }) => {
                 />
                 <h3>{automotive.title}</h3>
                 <p>Price: ${automotive.price}</p>
-                <button className="add-to-cart" onClick={(event) => handleAddToCart(event, automotive)}>
+                <button
+                  className="add-to-cart"
+                  onClick={(event) => handleAddToCart(event, automotive)}
+                >
                   Add to Cart
                 </button>{" "}
               </div>

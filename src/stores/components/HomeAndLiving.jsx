@@ -6,7 +6,6 @@ import Groceries from "./HomeAndLiving/Groceries";
 const HomeAndLiving = ({ addToCart }) => {
   return (
     <div>
-      <h2>Home And Living</h2>
       <div className="groceries-homeandliving">
         <h2>Groceries</h2> <Groceries addToCart={addToCart} />
       </div>

@@ -5,7 +5,6 @@ import SubHeader from "../components/Headers/SubHeader";
 import Footer from "../components/Headers/Footer";
 import emptycart from "../../imgs/emptycart.png";
 
-
 const Cart = ({ cartItems, removeFromCart, updateCartQuantity }) => {
   const navigate = useNavigate();
   const [quantities, setQuantities] = useState({});
@@ -29,8 +28,8 @@ const Cart = ({ cartItems, removeFromCart, updateCartQuantity }) => {
   };
 
   const handleCheckout = () => {
-    window.alert("Coming Soon...")
-    };
+    window.alert("Coming Soon...");
+  };
 
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.price * quantities[item.id],
@@ -42,13 +41,14 @@ const Cart = ({ cartItems, removeFromCart, updateCartQuantity }) => {
       <Header />
       <SubHeader />
       <div className="cart-body">
-        <h1>Cart</h1>
         {cartItems.length === 0 ? (
           <div className="cart-empty">
-            <img src={emptycart} alt="emptycart"/>
+            <img src={emptycart} alt="emptycart" />
+            <h1>Your cart is empty.</h1>
             <div>
-            <p>Your cart is empty. Go shopping to add items.</p>
-            <button onClick={() => navigate("/")}>Go Shopping</button>
+              <button className="go-shopping" onClick={() => navigate("/")}>
+                Go Shopping
+              </button>
             </div>
           </div>
         ) : (

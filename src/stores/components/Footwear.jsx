@@ -5,7 +5,6 @@ import WShoes from "./Footwear/WShoes";
 const Footwear = ({ addToCart }) => {
   return (
     <div>
-      <h2>Footwear</h2>
       <div className="mshoes-footwear">
         <h2>Men's shoes</h2> <MShoes addToCart={addToCart} />
       </div>

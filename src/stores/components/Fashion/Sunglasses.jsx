@@ -47,7 +47,10 @@ const Sunglasses = ({ addToCart }) => {
                 />
                 <h3>{glass.title}</h3>
                 <p>Price: ${glass.price}</p>
-                <button className="add-to-cart" onClick={(event) => handleAddToCart(event, glass)}>
+                <button
+                  className="add-to-cart"
+                  onClick={(event) => handleAddToCart(event, glass)}
+                >
                   Add to Cart
                 </button>{" "}
               </div>

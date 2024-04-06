@@ -12,7 +12,6 @@ import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 import ProductDetails from "./stores/pages/ProductDetails.jsx";
 import SearchResults from "./stores/pages/SearchResults.jsx";
 import Cart from "./stores/pages/Cart.jsx";
-import "../src/stores/pages/Cart.css";
 import MiniCart from "./stores/pages/MiniCart.jsx";
 
 const App = () => {
@@ -60,7 +59,6 @@ const App = () => {
   const closeMiniCart = () => {
     setShowMiniCart(false);
   };
-
 
   return (
     <Router>

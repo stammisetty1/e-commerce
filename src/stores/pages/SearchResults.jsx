@@ -66,7 +66,7 @@ const SearchResults = () => {
       <Header />
       <SubHeader />
       <div className="search-results-container">
-        <h1>Search Results</h1>
+        {/* <h1>Search Results</h1> */}
         {searchResults.length === 0 ? (
           <div className="no-search-results">
             <img src={nosearchresults} alt="no search results" />

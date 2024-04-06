@@ -1,14 +1,14 @@
-import { BasketItem, BasketToggle } from '@/components/basket';
-import { calculateTotal, displayMoney } from '../Helpers/utils';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useLocation } from 'react-router-dom';
+import { BasketItem, BasketToggle } from "@/components/basket";
+import { calculateTotal, displayMoney } from "../Helpers/utils";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useLocation } from "react-router-dom";
 
 const Cart = () => {
   const { isOpenModal, onOpenModal, onCloseModal } = useModal();
   const { cart, user } = useSelector((state) => ({
     cart: state.cart,
-    user: state.auth
+    user: state.auth,
   }));
   const history = useHistory();
   const { pathname } = useLocation();
@@ -17,9 +17,10 @@ const Cart = () => {
 
   useEffect(() => {
     if (didMount && firebase.auth.currentUser && basket.length !== 0) {
-      firebase.saveBasketItems(basket, firebase.auth.currentUser.uid)
+      firebase
+        .saveBasketItems(basket, firebase.auth.currentUser.uid)
         .then(() => {
-          console.log('Item saved to basket');
+          console.log("Item saved to basket");
         })
         .catch((e) => {
           console.log(e);
@@ -28,8 +29,8 @@ const Cart = () => {
   }, [basket.length]);
 
   const onCheckOut = () => {
-    if ((basket.length !== 0 && user)) {
-      document.body.classList.remove('is-basket-open');
+    if (basket.length !== 0 && user) {
+      document.body.classList.remove("is-basket-open");
       history.push(CHECKOUT_STEP_1);
     } else {
       onOpenModal();
@@ -38,7 +39,7 @@ const Cart = () => {
 
   const onSignInClick = () => {
     onCloseModal();
-    document.body.classList.remove('basket-open');
+    document.body.classList.remove("basket-open");
     history.push(CHECKOUT_STEP_1);
   };
 
@@ -48,12 +49,9 @@ const Cart = () => {
     }
   };
 
-  return user && user.role === 'ADMIN' ? null : (
+  return user && user.role === "ADMIN" ? null : (
     <Boundary>
-      <Modal
-        isOpen={isOpenModal}
-        onRequestClose={onCloseModal}
-      >
+      <Modal isOpen={isOpenModal} onRequestClose={onCloseModal}>
         <p className="text-center">You must sign in to continue checking out</p>
         <br />
         <div className="d-flex-center">
@@ -80,9 +78,7 @@ const Cart = () => {
             <h3 className="basket-header-title">
               My Basket &nbsp;
               <span>
-                (
-                {` ${basket.length} ${basket.length > 1 ? 'items' : 'item'}`}
-                )
+                ({` ${basket.length} ${basket.length > 1 ? "items" : "item"}`})
               </span>
             </h3>
             <BasketToggle>
@@ -124,12 +120,16 @@ const Cart = () => {
           <div className="basket-total">
             <p className="basket-total-title">Subtotal Amout:</p>
             <h2 className="basket-total-amount">
-              {displayMoney(calculateTotal(basket.map((product) => product.price * product.quantity)))}
+              {displayMoney(
+                calculateTotal(
+                  basket.map((product) => product.price * product.quantity)
+                )
+              )}
             </h2>
           </div>
           <button
             className="basket-checkout-button button"
-            disabled={basket.length === 0 || pathname === '/checkout'}
+            disabled={basket.length === 0 || pathname === "/checkout"}
             onClick={onCheckOut}
             type="button"
           >

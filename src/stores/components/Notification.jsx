@@ -1,6 +1,6 @@
 // Notification.js
 
-import React from 'react';
+import React from "react";
 
 const Notification = ({ itemTitle, closeModal }) => {
   return (

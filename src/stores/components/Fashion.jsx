@@ -11,7 +11,6 @@ import WDresses from "./Fashion/WDresses";
 const Fashion = ({ addToCart }) => {
   return (
     <div>
-      <h2>Fashion</h2>
       <div className="mshirts-fashion">
         <h2>Men's Shirts</h2> <MShirts addToCart={addToCart} />
       </div>
@@ -21,9 +20,6 @@ const Fashion = ({ addToCart }) => {
       <div className="sunglasses-fashion">
         <h2>Sunglasses</h2> <Sunglasses addToCart={addToCart} />
       </div>
-      <div className="mshoes-fashion">
-        <h2>Men's shoes</h2> <MShoes addToCart={addToCart} />
-      </div>
       <div className="wbags-fashion">
         <h2>Women's Bags</h2> <WBags addToCart={addToCart} />
       </div>
@@ -32,9 +28,6 @@ const Fashion = ({ addToCart }) => {
       </div>
       <div className="wjewellery-fashion">
         <h2>Women's Jewellery</h2> <WJewellery addToCart={addToCart} />
-      </div>
-      <div className="wshoes-fashion">
-        <h2>Women's Shoes</h2> <WShoes addToCart={addToCart} />
       </div>
     </div>
   );

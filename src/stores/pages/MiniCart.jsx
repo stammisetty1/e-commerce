@@ -10,14 +10,21 @@ const MiniCart = ({ isVisible, cartItems, removeFromCart, closeMiniCart }) => {
     closeMiniCart(); // Close the mini cart before navigating
     navigate("/cart"); // Navigate to the cart page
   };
-  
+
   return (
     <div className={`mini-cart ${isVisible ? "show" : ""}`}>
       <div className="modal-content">
         <button className="close-button" onClick={closeMiniCart}>
           &#10005; {/* Cross symbol */}
         </button>
-        <h2>Mini Cart</h2>
+        <h2
+          style={{
+            textDecoration: "underline",
+            color: "#475d77",
+          }}
+        >
+          Mini Cart
+        </h2>
         <div className="cart-content">
           {cartItems.length > 0 ? (
             <>

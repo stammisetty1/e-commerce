@@ -5,7 +5,6 @@ import Laptops from "./Electronics/Laptops";
 const Electronics = ({ addToCart }) => {
   return (
     <div>
-      <h2>Electronics</h2>
       <div className="smartphones-electronics">
         <h2>Smartphones</h2>
         <Smartphones addToCart={addToCart} />

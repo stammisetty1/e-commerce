@@ -208,7 +208,7 @@ const Home = ({ addToCart }) => {
       <CarouselComp />
       <div className="home-body">
         <div className="product-category">
-          <h1 onClick={() => handleSeeAll("electronics")}>Electronics</h1>
+          <h2 onClick={() => handleSeeAll("electronics")}>Electronics</h2>
           <button onClick={() => handleSeeAll("electronics")}>See All</button>
         </div>
         <div className="products-home">
@@ -229,7 +229,7 @@ const Home = ({ addToCart }) => {
           ))}
         </div>
         <div className="product-category">
-          <h1 onClick={() => handleSeeAll("fashion")}>Fashion</h1>
+          <h2 onClick={() => handleSeeAll("fashion")}>Fashion</h2>
           <button onClick={() => handleSeeAll("fashion")}>See All</button>
         </div>
         <div className="products-home">
@@ -249,7 +249,7 @@ const Home = ({ addToCart }) => {
           ))}
         </div>
         <div className="product-category">
-          <h1 onClick={() => handleSeeAll("personalcare")}>PersonalCare</h1>
+          <h2 onClick={() => handleSeeAll("personalcare")}>PersonalCare</h2>
           <button onClick={() => handleSeeAll("personalcare")}>See All</button>
         </div>
         <div className="products-home">
@@ -269,7 +269,7 @@ const Home = ({ addToCart }) => {
           ))}
         </div>
         <div className="product-category">
-          <h1 onClick={() => handleSeeAll("accessories")}>Accessories</h1>
+          <h2 onClick={() => handleSeeAll("accessories")}>Accessories</h2>
           <button onClick={() => handleSeeAll("accessories")}>See All</button>
         </div>
         <div className="products-home">
@@ -289,7 +289,7 @@ const Home = ({ addToCart }) => {
           ))}
         </div>
         <div className="product-category">
-          <h1 onClick={() => handleSeeAll("homeandliving")}>Home And Living</h1>
+          <h2 onClick={() => handleSeeAll("homeandliving")}>Home And Living</h2>
           <button onClick={() => handleSeeAll("homeandliving")}>See All</button>
         </div>
         <div className="products-home">
@@ -309,7 +309,7 @@ const Home = ({ addToCart }) => {
           ))}
         </div>
         <div className="product-category">
-          <h1 onClick={() => handleSeeAll("footwear")}>Footwear</h1>
+          <h2 onClick={() => handleSeeAll("footwear")}>Footwear</h2>
           <button onClick={() => handleSeeAll("footwear")}>See All</button>
         </div>
         <div className="products-home">
@@ -329,7 +329,7 @@ const Home = ({ addToCart }) => {
           ))}
         </div>
         <div className="product-category">
-          <h1 onClick={() => handleSeeAll("automotives")}>Automotives</h1>
+          <h2 onClick={() => handleSeeAll("automotives")}>Automotives</h2>
           <button onClick={() => handleSeeAll("automotives")}>See All</button>
         </div>
         <div className="products-home">

@@ -5,7 +5,6 @@ import Skincare from "./PersonalCare/Skincare";
 const PersonalCare = ({ addToCart }) => {
   return (
     <div>
-      <h2>Personal Care</h2>
       <div className="fragrances-personalcare">
         <h2>Fragrances</h2> <Fragrances addToCart={addToCart} />
       </div>
